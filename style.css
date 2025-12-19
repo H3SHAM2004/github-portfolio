@@ -1,0 +1,51 @@
+/* Minimal styles to get you started. Edit freely over time. */
+
+/* Base */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  line-height: 1.6;
+  color: #0f172a;             /* slate-900 */
+  background: #ffffff;
+}
+
+/* Layout */
+.container { width: min(960px, 92%); margin: 0 auto; }
+.section { padding: 40px 0; }
+
+/* Header */
+.site-header {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 4%;
+  background: rgba(255,255,255,0.9);
+  border-bottom: 1px solid #e5e7eb; /* gray-200 */
+  backdrop-filter: blur(8px);
+}
+.brand { text-decoration: none; color: inherit; font-weight: 700; }
+.nav { display: flex; gap: 1rem; }
+.nav a { color: #475569; text-decoration: none; font-weight: 500; }
+.nav a:hover { color: #111827; }
+
+/* Typography */
+h1, h2, h3 { line-height: 1.2; margin: 0 0 .5rem; }
+h1 { font-size: clamp(1.8rem, 4vw, 2.5rem); }
+h2 { font-size: clamp(1.3rem, 2.5vw, 1.8rem); margin-top: .5rem; }
+.subtitle { color: #64748b; /* slate-500 */ }
+
+/* Projects grid */
+.grid {
+  display: grid; gap: 16px;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+@media (min-width: 640px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 960px) { .grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* Footer */
+.site-footer { border-top: 1px solid #e5e7eb; padding: 20px 0; color: #64748b; }
+
+/* Links */
+a { color: #1d4ed8; }
+a:hover { text-decoration: underline; }
