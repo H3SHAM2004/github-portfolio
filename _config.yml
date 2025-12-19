@@ -1,3 +1,6 @@
 title: Github Portfolio
 description: A retro-style site
 remote_theme: gulci/morph
+
+plugins:
+  - jekyll-remote-theme
