@@ -92,29 +92,28 @@
 			document.getElementById('year').textContent = new Date().getFullYear();
 
 			async function loadProjects() {
-				try{
-					const response = await fetch('https://api.github.com/users/H3SHAM2004/repos')
-					const repos = await response.json();
-					const projectsSection = document.getElementById('projects');
-					projectsContainer.innerHTML = '';
-					repos.forEach(repo => {
-						const projectCard = document.createElement('div');
-						projectCard.className = 'card';
-						projectCard.innerHTML = `
-							<h3>${repo.name}</h3>
-							<p>${repo.description || 'No description available.'}</p>
-							<a href="${repo.html_url}" target="_blank">View Project</a>
-						`;
-						projectsContainer.appendChild(projectCard);
-					});
-				}
-				catch(error){
-					console.error('Error loading projects:', error);
-				}
-				
+			try{
+				const response = await fetch('https://api.github.com/users/H3SHAM2004/repos')
+				const repos = await response.json();
+				const projectsContainer = document.getElementById('projects-container');
+				projectsContainer.innerHTML = '';
+				repos.forEach(repo => {
+					const projectCard = document.createElement('div');
+					projectCard.className = 'card';
+					projectCard.innerHTML = `
+						<h3>${repo.name}</h3>
+						<p>${repo.description || 'No description available.'}</p>
+						<a href="${repo.html_url}" target="_blank">View Project</a>
+					`;
+					projectsContainer.appendChild(projectCard);
+				});
 			}
+			catch(error){
+				console.error('Error loading projects:', error);
+			}
+		}
 
-			loadProjects();
+loadProjects();
 		</script>
 	</body>
 	</html>
