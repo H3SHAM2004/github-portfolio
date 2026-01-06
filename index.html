@@ -22,7 +22,6 @@
 			<section class="section hero">
 				<h1>Hesham El-Ghussein</h1>
 				<p class="subtitle">Graduate of Fanshawe College 2025 in Computer Programming and Analysis. Ready to make an impact in the IT industry.</p>
-                <p class="subtitle">This site is currently a work in progress!</p>
 			</section>
 
 			<section id="about" class="section">
@@ -59,6 +58,7 @@
 				<h2>Contact</h2>
 				<p>Best way to reach me:</p>
 				<p><a href="mailto:Hesham236@outlook.com">Hesham236@outlook.com</a></p>
+				<p><a href="https://www.linkedin.com/in/hesham-el-ghussein-a25586260/" target="_blank">LinkedIn</a></p>
 			</section>
 
             <section id="qna" class="section">
@@ -92,28 +92,31 @@
 			document.getElementById('year').textContent = new Date().getFullYear();
 
 			async function loadProjects() {
-			try{
-				const response = await fetch('https://api.github.com/users/H3SHAM2004/repos')
+			try {
+				const response = await fetch('https://api.github.com/users/H3SHAM2004/repos');
 				const repos = await response.json();
 				const projectsContainer = document.getElementById('projects-container');
 				projectsContainer.innerHTML = '';
-				repos.forEach(repo => {
+
+				const excluded = ['github-portfolio', 'H3SHAM2004'];
+				repos
+				.filter(repo => !excluded.includes(repo.name))
+				.forEach(repo => {
 					const projectCard = document.createElement('div');
 					projectCard.className = 'card';
 					projectCard.innerHTML = `
-						<h3>${repo.name}</h3>
-						<p>${repo.description || 'No description available.'}</p>
-						<a href="${repo.html_url}" target="_blank">View Project</a>
+					<h3>${repo.name}</h3>
+					<p>${repo.description || 'No description available.'}</p>
+					<a href="${repo.html_url}" target="_blank">View Project</a>
 					`;
 					projectsContainer.appendChild(projectCard);
 				});
-			}
-			catch(error){
+			} catch (error) {
 				console.error('Error loading projects:', error);
 			}
-		}
+			}
 
-loadProjects();
+			loadProjects();
 		</script>
 	</body>
 	</html>
